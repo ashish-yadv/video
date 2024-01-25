@@ -64,7 +64,7 @@ userSchema.pre("save", async function (next) {
     // Whenever we make any change in any field and save it password will be changed everytime. But we want that it should change the passowrd only if there is modification in "password" field.
     if (!this.isModified("password")) return next();
 
-    this.password = bcrypt.hash(this.password, 10); // 10: Number of rounds.
+    this.password = await bcrypt.hash(this.password, 10); // 10: Number of rounds.
     next();
 });
 
@@ -108,3 +108,5 @@ userSchema.methods.generateRefreshToken = function () {
 }
 
 export const User = mongoose.model("User", userSchema);
+
+// "User" can directly contact with database as it is created using "mongoose". So, "User" will call mongoDB on our behalf.

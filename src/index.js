@@ -7,7 +7,7 @@ import { app } from './app.js';
 // We configure 'dotenv' in main file so that the environment(env) variables are available everwhere.
 // configure dotenv👇🏼:
 dotenv.config({
-    path: './env'
+    path: './.env'
 });
 
 // When connected to database it returns a promise:
